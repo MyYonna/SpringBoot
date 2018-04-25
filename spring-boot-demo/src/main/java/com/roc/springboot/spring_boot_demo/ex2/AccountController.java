@@ -20,10 +20,12 @@ public class AccountController {
 	@RequestMapping(value="")
 	public Map<String,Object> index(){
 		Map<String,Object> result = new HashMap<String,Object>();
-    	result.put("msg", "ok");
-    	result.put("success", true);
+    	Map<String,Object> result1 = new HashMap<String,Object>();
+    	result1.put("msg", "ok");
+    	result1.put("success", true);
     	result.put("name","index" );
     	result.put("money",88888 );
+    	result.put("_links", result1);
 		return result;
 	}
 	

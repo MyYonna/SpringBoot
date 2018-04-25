@@ -3,6 +3,7 @@ package com.roc.springboot.spring_boot_demo.ex4;
 import static org.springframework.restdocs.hypermedia.HypermediaDocumentation.halLinks;
 import static org.springframework.restdocs.hypermedia.HypermediaDocumentation.linkWithRel;
 import static org.springframework.restdocs.hypermedia.HypermediaDocumentation.relaxedLinks;
+import static org.springframework.restdocs.hypermedia.HypermediaDocumentation.links;
 import static org.springframework.restdocs.mockmvc.MockMvcRestDocumentation.document;
 import static org.springframework.restdocs.mockmvc.RestDocumentationRequestBuilders.post;
 import static org.springframework.restdocs.payload.PayloadDocumentation.fieldWithPath;
@@ -36,12 +37,13 @@ public class WebLayerDocumentation extends SpringRestDocApplicationTest{
 	public void indexAccount() throws Exception {
 		this.mockMvc.perform(get("/account/"))
 		.andExpect(status().isOk())
-		.andDo(document("restful-account-index",relaxedLinks(halLinks(), 
+		.andDo(document("restful-account-index",links(
 				linkWithRel("msg").description("Link to the alpha resource"),
 				linkWithRel("success").description("<<resources-restful-account-index,Links>> to the bravo resource")),
 				  relaxedResponseFields(
                           fieldWithPath("money").type("money").description("资金"),
-                          fieldWithPath("name").type("name").description("名称"))));
+                          fieldWithPath("name").type("name").description("名称"),
+                          fieldWithPath("_links").type("data").description("连接"))));
 	}
 	@Test
 	public void addAccount() throws Exception {
