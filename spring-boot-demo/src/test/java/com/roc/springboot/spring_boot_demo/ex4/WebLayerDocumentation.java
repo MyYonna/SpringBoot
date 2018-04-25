@@ -8,6 +8,7 @@ import static org.springframework.restdocs.mockmvc.MockMvcRestDocumentation.docu
 import static org.springframework.restdocs.mockmvc.RestDocumentationRequestBuilders.post;
 import static org.springframework.restdocs.payload.PayloadDocumentation.fieldWithPath;
 import static org.springframework.restdocs.payload.PayloadDocumentation.relaxedResponseFields;
+import static org.springframework.restdocs.payload.PayloadDocumentation.responseFields;
 import static org.springframework.restdocs.request.RequestDocumentation.parameterWithName;
 import static org.springframework.restdocs.request.RequestDocumentation.requestParameters;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
@@ -40,10 +41,10 @@ public class WebLayerDocumentation extends SpringRestDocApplicationTest{
 		.andDo(document("restful-account-index",links(
 				linkWithRel("msg").description("Link to the alpha resource"),
 				linkWithRel("success").description("<<resources-restful-account-index,Links>> to the bravo resource")),
-				  relaxedResponseFields(
+				responseFields(
                           fieldWithPath("money").type("money").description("资金"),
                           fieldWithPath("name").type("name").description("名称"),
-                          fieldWithPath("_links").type("data").description("连接"))));
+                          fieldWithPath("links").type("data").description("连接"))));
 	}
 	@Test
 	public void addAccount() throws Exception {

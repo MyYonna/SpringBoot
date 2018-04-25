@@ -1,5 +1,6 @@
 package com.roc.springboot.spring_boot_demo.ex2;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -20,12 +21,20 @@ public class AccountController {
 	@RequestMapping(value="")
 	public Map<String,Object> index(){
 		Map<String,Object> result = new HashMap<String,Object>();
-    	Map<String,Object> result1 = new HashMap<String,Object>();
-    	result1.put("msg", "ok");
-    	result1.put("success", true);
+    	List<Map<String,Object>> result1 = new ArrayList<Map<String,Object>>();
+    	Map<String,Object> result2 = new HashMap<String,Object>();
+    	Map<String,Object> result3 = new HashMap<String,Object>();
+    	result2.put("href", "https://api.yupaopao.com/restful/company/82");
+    	result2.put("rel", "msg");
+    	result2.put("title", "消息");
+    	result3.put("href", "https://api.yupaopao.com/restful/company/82");
+    	result3.put("rel", "success");
+    	result3.put("title", "成功");
+    	result1.add( result2);
+    	result1.add( result3);
     	result.put("name","index" );
     	result.put("money",88888 );
-    	result.put("_links", result1);
+    	result.put("links", result1);
 		return result;
 	}
 	
