@@ -1,5 +1,8 @@
 package com.roc.springboot.spring_boot_demo.ex4;
 
+import static org.springframework.restdocs.hypermedia.HypermediaDocumentation.halLinks;
+import static org.springframework.restdocs.hypermedia.HypermediaDocumentation.linkWithRel;
+import static org.springframework.restdocs.hypermedia.HypermediaDocumentation.relaxedLinks;
 import static org.springframework.restdocs.mockmvc.MockMvcRestDocumentation.document;
 import static org.springframework.restdocs.mockmvc.RestDocumentationRequestBuilders.post;
 import static org.springframework.restdocs.payload.PayloadDocumentation.fieldWithPath;
@@ -9,10 +12,6 @@ import static org.springframework.restdocs.request.RequestDocumentation.requestP
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.put;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
-
-import static org.springframework.restdocs.hypermedia.HypermediaDocumentation.links;
-import static org.springframework.restdocs.hypermedia.HypermediaDocumentation.halLinks;
-import static org.springframework.restdocs.hypermedia.HypermediaDocumentation.linkWithRel;
 
 import org.junit.FixMethodOrder;
 import org.junit.Test;
@@ -37,9 +36,12 @@ public class WebLayerDocumentation extends SpringRestDocApplicationTest{
 	public void indexAccount() throws Exception {
 		this.mockMvc.perform(get("/account/"))
 		.andExpect(status().isOk())
-		.andDo(document("restful-account-index",links(halLinks(), 
-				linkWithRel("alpha").description("Link to the alpha resource"),
-				linkWithRel("bravo").description("Link to the bravo resource"))));
+		.andDo(document("restful-account-index",relaxedLinks(halLinks(), 
+				linkWithRel("msg").description("Link to the alpha resource"),
+				linkWithRel("success").description("Link to the bravo resource")),
+				  relaxedResponseFields(
+                          fieldWithPath("money").type("money").description("资金"),
+                          fieldWithPath("name").type("name").description("名称"))));
 	}
 	@Test
 	public void addAccount() throws Exception {

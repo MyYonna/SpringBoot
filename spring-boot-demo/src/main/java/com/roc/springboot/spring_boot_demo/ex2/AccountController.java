@@ -18,8 +18,8 @@ public class AccountController {
 	AccountService accountService;
 	
 	@RequestMapping(value="")
-	public String index(){
-		return "hello world";
+	public Account index(){
+		return accountService.findAccountById(10);
 	}
 	
 	@RequestMapping(value="/lists")
