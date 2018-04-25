@@ -10,6 +10,10 @@ import static org.springframework.test.web.servlet.request.MockMvcRequestBuilder
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.put;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
+import static org.springframework.restdocs.hypermedia.HypermediaDocumentation.links;
+import static org.springframework.restdocs.hypermedia.HypermediaDocumentation.halLinks;
+import static org.springframework.restdocs.hypermedia.HypermediaDocumentation.linkWithRel;
+
 import org.junit.FixMethodOrder;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -31,9 +35,11 @@ public class WebLayerDocumentation extends SpringRestDocApplicationTest{
 
 	@Test
 	public void indexAccount() throws Exception {
-		mockMvc.perform(get("/account/"))
+		this.mockMvc.perform(get("/account/"))
 		.andExpect(status().isOk())
-		.andDo(document("restful-account-index"));
+		.andDo(document("restful-account-index",links(halLinks(), 
+				linkWithRel("alpha").description("Link to the alpha resource"),
+				linkWithRel("bravo").description("Link to the bravo resource"))));
 	}
 	@Test
 	public void addAccount() throws Exception {

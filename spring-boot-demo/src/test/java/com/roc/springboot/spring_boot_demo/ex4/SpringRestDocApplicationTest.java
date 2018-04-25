@@ -1,27 +1,21 @@
 package com.roc.springboot.spring_boot_demo.ex4;
 
+import static org.springframework.restdocs.mockmvc.MockMvcRestDocumentation.documentationConfiguration;
+import static org.springframework.restdocs.payload.PayloadDocumentation.fieldWithPath;
+import static org.springframework.restdocs.request.RequestDocumentation.parameterWithName;
+
 import org.junit.Before;
 import org.junit.Rule;
-import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.restdocs.JUnitRestDocumentation;
-import org.springframework.restdocs.cli.CliDocumentation;
-import org.springframework.restdocs.http.HttpDocumentation;
 import org.springframework.restdocs.payload.FieldDescriptor;
-import org.springframework.restdocs.payload.PayloadDocumentation;
 import org.springframework.restdocs.request.ParameterDescriptor;
-import org.springframework.restdocs.snippet.Snippet;
-import org.springframework.restdocs.templates.TemplateFormats;
 import org.springframework.test.context.junit4.SpringRunner;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.setup.MockMvcBuilders;
 import org.springframework.web.context.WebApplicationContext;
-
-import static org.springframework.restdocs.mockmvc.MockMvcRestDocumentation.documentationConfiguration;
-import static org.springframework.restdocs.payload.PayloadDocumentation.fieldWithPath;
-import static org.springframework.restdocs.request.RequestDocumentation.parameterWithName;
 
 /**
  * 父类，用于准备好相关环境
