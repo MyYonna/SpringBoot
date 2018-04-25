@@ -18,8 +18,13 @@ public class AccountController {
 	AccountService accountService;
 	
 	@RequestMapping(value="")
-	public Account index(){
-		return accountService.findAccountById(10);
+	public Map<String,Object> index(){
+		Map<String,Object> result = new HashMap<String,Object>();
+    	result.put("msg", "ok");
+    	result.put("success", true);
+    	result.put("name","index" );
+    	result.put("money",88888 );
+		return result;
 	}
 	
 	@RequestMapping(value="/lists")

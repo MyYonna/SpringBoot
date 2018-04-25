@@ -53,18 +53,23 @@ API的说明包括：请求方式、请求地址、请求参数说明和响应�
 [[resources-restful-account-profile]]
 ==== 3.1.1、Account 接口信息描述
 
-operation::restful-account-profile[snippets='curl-request,httpie-request,http-request,http-response']
-[[resources-restful-account-index]]
+operation::restful-account-profile[snippets='curl-request,httpie-request,http-request,http-response,response-field']
 
-==== 3.1.2、Account 添加
+[[resources-restful-account-index]]
+==== 3.1.2、Account 根
+operation::restful-account-index[snippets='curl-request,httpie-request,http-request,http-response,response-fields,links']
+
+[[resources-restful-account-add]]
+==== 3.1.3、Account 添加
 
 operation::restful-account-add[snippets='curl-request,httpie-request,http-request,request-parameters,http-response,response-fields']
-
-==== 3.1.3、Account 更新
+[[resources-restful-account-update]]
+==== 3.1.4、Account 更新
 
 operation::restful-account-update[snippets='curl-request,httpie-request,http-request,request-parameters,http-response,response-fields']
 
-==== 3.1.4、Account 获取
+[[resources-restful-account-get]]
+==== 3.1.5、Account 获取
 
 operation::restful-account-get[snippets='curl-request,httpie-request,http-request,http-response,response-fields']
 [[resources-general]]

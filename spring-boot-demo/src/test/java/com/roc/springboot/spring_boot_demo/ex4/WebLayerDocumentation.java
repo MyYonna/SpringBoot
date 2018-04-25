@@ -38,7 +38,7 @@ public class WebLayerDocumentation extends SpringRestDocApplicationTest{
 		.andExpect(status().isOk())
 		.andDo(document("restful-account-index",relaxedLinks(halLinks(), 
 				linkWithRel("msg").description("Link to the alpha resource"),
-				linkWithRel("success").description("Link to the bravo resource")),
+				linkWithRel("success").description("<<resources-restful-account-index,Links>> to the bravo resource")),
 				  relaxedResponseFields(
                           fieldWithPath("money").type("money").description("资金"),
                           fieldWithPath("name").type("name").description("名称"))));
